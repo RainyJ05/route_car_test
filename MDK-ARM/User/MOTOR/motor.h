@@ -8,9 +8,13 @@ void Motor_Init();
 
 float Get_Left_Speed();
 float Get_Right_Speed();
-void Get_Speed_Open();
-void Get_Speed_Close();
-void Get_Speed_Tick();
-
-
+float Get_Left_Distance();
+float Get_Right_Distance();
+void Get_Encoder_Open();
+void Get_Encoder_Close();
+void Get_Encoder_Tick();
+void Turn_Back();
+void Turn_Left();
+void Turn_Right();
+void GO_Distance(int distance);
 #endif

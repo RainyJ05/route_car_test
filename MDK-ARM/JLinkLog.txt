@@ -1,0 +1,105 @@
+T591C 000:264.925   SEGGER J-Link V6.98e Log File
+T591C 000:265.110   DLL Compiled: Mar 29 2021 14:18:39
+T591C 000:265.127   Logging started @ 2025-07-19 11:16
+T591C 000:265.147 - 265.158ms
+T591C 000:265.175 JLINK_SetWarnOutHandler(...)
+T591C 000:265.193 - 0.026ms
+T591C 000:265.210 JLINK_OpenEx(...)
+T591C 000:268.482   Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+T591C 000:269.057   Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+T591C 000:272.281   Hardware: V7.00
+T591C 000:272.388   S/N: 20090928
+T591C 000:272.428   OEM: SEGGER
+T591C 000:272.466   Feature(s): JFlash, RDI, GDB, FlashDL, FlashBP
+T591C 000:274.077   TELNET listener socket opened on port 19021
+T591C 000:274.235   WEBSRV Starting webserver
+T591C 000:274.734   WEBSRV Webserver running on local port 19080
+T591C 000:274.754 - 9.548ms returns "O.K."
+T591C 000:274.787 JLINK_GetEmuCaps()
+T591C 000:274.798 - 0.015ms returns 0x88EA5833
+T591C 000:274.818 JLINK_TIF_GetAvailable(...)
+T591C 000:275.148 - 0.340ms
+T591C 000:275.175 JLINK_SetErrorOutHandler(...)
+T591C 000:275.184 - 0.014ms
+T591C 000:275.225 JLINK_ExecCommand("ProjectFile = "C:\stm32ProjectFolder\stm32f401ccu6\route_car_test\MDK-ARM\JLinkSettings.ini"", ...). 
+T591C 000:296.340   Ref file found at: C:\keil5\ARM\Segger\JLinkDevices.ref
+T591C 000:309.953   XML referenced by ref file: C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml
+T591C 000:311.074   C:\Program Files (x86)\SEGGER\JLink\JLinkDevices.xml evaluated successfully.
+T591C 000:416.954 - 141.742ms returns 0x00
+T591C 000:417.045 JLINK_ExecCommand("Device = STM32F401CCUx", ...). 
+T591C 000:417.496   Device "STM32F401CC" selected.
+T591C 000:417.845 - 0.792ms returns 0x00
+T591C 000:417.878 JLINK_GetHardwareVersion()
+T591C 000:417.890 - 0.017ms returns 70000
+T591C 000:417.905 JLINK_GetDLLVersion()
+T591C 000:417.916 - 0.016ms returns 69805
+T591C 000:417.931 JLINK_GetOEMString(...)
+T591C 000:417.956 JLINK_GetFirmwareString(...)
+T591C 000:417.968 - 0.016ms
+T591C 000:417.985 JLINK_GetDLLVersion()
+T591C 000:417.996 - 0.016ms returns 69805
+T591C 000:418.010 JLINK_GetCompileDateTime()
+T591C 000:418.021 - 0.016ms
+T591C 000:418.038 JLINK_GetFirmwareString(...)
+T591C 000:418.049 - 0.016ms
+T591C 000:418.063 JLINK_GetHardwareVersion()
+T591C 000:418.074 - 0.020ms returns 70000
+T591C 000:418.091 JLINK_GetSN()
+T591C 000:418.098 - 0.010ms returns 20090928
+T591C 000:418.107 JLINK_GetOEMString(...)
+T591C 000:418.118 JLINK_TIF_Select(JLINKARM_TIF_JTAG)
+T591C 000:420.939 - 2.846ms returns 0x00
+T591C 000:420.978 JLINK_HasError()
+T591C 000:421.009 JLINK_SetSpeed(5000)
+T591C 000:421.345 - 0.345ms
+T591C 000:422.136 JLINK_HasError()
+T591C 000:422.167 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T591C 000:422.180 - 0.019ms returns JLINKARM_RESET_TYPE_NORMAL
+T591C 000:422.209 JLINK_Reset()
+T591C 000:425.168   Could not measure total IR len. TDO is constant high.
+T591C 000:425.877   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 000:485.687   Could not measure total IR len. TDO is constant high.
+T591C 000:486.722   
+  ***** Error: 
+T591C 000:486.754   STM32: Connecting to CPU via connect under reset failed.
+T591C 000:624.175   Could not measure total IR len. TDO is constant high.
+T591C 000:624.986   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 000:685.830   Could not measure total IR len. TDO is constant high.
+T591C 000:686.623   
+  ***** Error: 
+T591C 000:686.637   STM32: Connecting to CPU via connect under reset failed.
+T591C 000:746.980 - 324.993ms
+T591C 000:747.682 JLINK_GetIdData(pIdData)
+T591C 000:752.009   Could not measure total IR len. TDO is constant high.
+T591C 000:752.726   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 000:812.485   Could not measure total IR len. TDO is constant high.
+T591C 000:813.212   
+  ***** Error: 
+T591C 000:813.228   STM32: Connecting to CPU via connect under reset failed.
+T591C 000:953.053   Could not measure total IR len. TDO is constant high.
+T591C 000:953.710   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 001:015.161   Could not measure total IR len. TDO is constant high.
+T591C 001:016.003   
+  ***** Error: 
+T591C 001:016.034   STM32: Connecting to CPU via connect under reset failed.
+T591C 001:074.595 - 326.963ms
+T591C 001:074.687 JLINK_GetIdData(pIdData)
+T591C 001:077.878   Could not measure total IR len. TDO is constant high.
+T591C 001:078.618   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 001:138.425   Could not measure total IR len. TDO is constant high.
+T591C 001:139.235   
+  ***** Error: 
+T591C 001:139.253   STM32: Connecting to CPU via connect under reset failed.
+T591C 001:278.602   Could not measure total IR len. TDO is constant high.
+T591C 001:279.356   STM32 (connect): Can not attach to CPU. Trying connect under reset.
+T591C 001:339.595   Could not measure total IR len. TDO is constant high.
+T591C 001:340.391   
+  ***** Error: 
+T591C 001:340.421   STM32: Connecting to CPU via connect under reset failed.
+T591C 001:400.094 - 325.453ms
+T591C 001:436.220 JLINK_GetFirmwareString(...)
+T591C 001:436.286 - 0.073ms
+T591C 023:478.273 JLINK_Close()
+T591C 023:491.882 - 13.669ms
+T591C 023:491.950   
+T591C 023:491.961   Closed

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F401xC</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;./User/KEY;./User/MOTOR;./User/OLED;./User/4ROUTE;.\User\SOL;.\User\PID</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;./User/KEY;./User/MOTOR;./User/OLED;./User/4ROUTE;./User/SOL;./User/PID;./User/CONTROL</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -607,6 +607,16 @@
               <FileName>pid.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\User\PID\pid.h</FilePath>
+            </File>
+            <File>
+              <FileName>control.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\CONTROL\control.c</FilePath>
+            </File>
+            <File>
+              <FileName>control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\CONTROL\control.h</FilePath>
             </File>
           </Files>
         </Group>

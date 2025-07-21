@@ -33,6 +33,7 @@
 "route_car_test\route.o"
 "route_car_test\usart_cdx.o"
 "route_car_test\pid.o"
+"route_car_test\control.o"
 --library_type=microlib --strict --scatter "route_car_test\route_car_test.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

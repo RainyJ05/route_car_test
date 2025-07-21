@@ -44,4 +44,5 @@ route_car_test\main.o: ./User/MOTOR/motor.h
 route_car_test\main.o: ./User/KEY/key.h
 route_car_test\main.o: C:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 route_car_test\main.o: ./User/4ROUTE/route.h
-route_car_test\main.o: .\User\PID\pid.h
+route_car_test\main.o: ./User/PID/pid.h
+route_car_test\main.o: ./User/CONTROL/control.h

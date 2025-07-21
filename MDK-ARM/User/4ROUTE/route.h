@@ -3,9 +3,10 @@
 
 #include "stm32f4xx.h"                  // Device header
 
-void Get_Route_State_Tick();
-int Get_Route_State();
+void Get_Route_Error_Tick();
+float Get_Route_Error();
 void Route_Open();
 void Route_Close();
+extern volatile uint8_t Turn_Flag;
 
 #endif

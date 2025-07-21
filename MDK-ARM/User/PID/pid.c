@@ -2,12 +2,12 @@
 #include "route.h"
 #include "motor.h"
 
-uint8_t Pid_Flag = 0;//控制标志位
+volatile uint8_t Pid_Flag = 0;//控制标志位
 int Base_Pwm = 0;//基础速度
 
 
 // PID参数
-#define KP 1.0f   // 比例系数
+#define KP 10.0f  // 比例系数
 #define KI 0.0f   // 积分系数
 #define KD 0.0f  // 微分系数
 
@@ -39,12 +39,12 @@ void Pid_Controller_Tick()//中断里20ms执行一次
 			float error = 0;
 			float output = 0;
 		
-			error = Get_Route_State();
+			error = Get_Route_Error();
 			error_sum += error;
 			
 			output = KP * error + KI * error_sum + KD * (error - last_error);
 			
-			Load(Base_Pwm - output*100,Base_Pwm + output*100);
+			Load(Base_Pwm + output,Base_Pwm - output);
 		}
 	}
 }

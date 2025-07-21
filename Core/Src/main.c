@@ -31,6 +31,7 @@
 #include "stdio.h"
 #include "route.h"
 #include "pid.h"
+#include "control.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,6 +53,10 @@
 
 /* USER CODE BEGIN PV */
 char oled_message[20] = {0};
+char uart_message[2] = {0,0};//启停标志位（012），转向选择
+uint8_t Move_Flag = 0;//0：待机，1：开启，2：停止
+extern int TurnChoose[5];//路口行动选择，由串口数据修
+uint8_t i = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,34 +113,51 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	Get_Speed_Open();
-	Route_Open();
-	Key_Open();
+	uint8_t KeyNum = 0;//存建值，模拟放取药
 
-	uint8_t KeyNum;
+  Key_Open();//按键打开
+	Get_Encoder_Open();
+	
+	HAL_UART_Receive_IT(&huart1,(uint8_t *)uart_message,2);
 
-	float Speed_L;
-	float Speed_R;
   while (1)
   {
+		
+		OLED_NewFrame();
+		sprintf(oled_message,"M:%d",Move_Flag);
+		OLED_PrintASCIIString(0,0,oled_message,&afont12x6,OLED_COLOR_NORMAL);
+		sprintf(oled_message,"T1:%d",TurnChoose[0]);
+		OLED_PrintASCIIString(0,17,oled_message,&afont12x6,OLED_COLOR_NORMAL);
+		sprintf(oled_message,"T2:%d",TurnChoose[1]);
+		OLED_PrintASCIIString(60,17,oled_message,&afont12x6,OLED_COLOR_NORMAL);
+		sprintf(oled_message,"T3:%d",TurnChoose[2]);
+		OLED_PrintASCIIString(0,34,oled_message,&afont12x6,OLED_COLOR_NORMAL);
+		sprintf(oled_message,"T4:%d",TurnChoose[3]);
+		OLED_PrintASCIIString(60,34,oled_message,&afont12x6,OLED_COLOR_NORMAL);
+		OLED_ShowFrame();
+		
 		KeyNum = Key_GetNum();
 		if(KeyNum == 1)
 		{
-			Pid_Open(400);
+			Move_Flag = 1;//启动标志位，可以被串口数据改变
 		}
-		if(KeyNum == 2)
+		if(Move_Flag == 1)
+		{
+			Route_Open();
+			Pid_Open(200);
+			Move_Flag = 0;//清空标志位
+		}
+		if(Move_Flag == 2)
 		{
 			Pid_Close();
+			Route_Close();
+			Move_Flag = 0;//清空标志位
 		}
-//		OLED_NewFrame();
-		Speed_L = Get_Left_Speed();
-//		sprintf(oled_message,"Left:%f",speed);
-//		OLED_PrintASCIIString(0,0,oled_message,&afont12x6,OLED_COLOR_NORMAL);
-		Speed_R = Get_Right_Speed();
-//		sprintf(oled_message,"Right:%f",speed);
-//		OLED_PrintASCIIString(0,20,oled_message,&afont12x6,OLED_COLOR_NORMAL);
-//		OLED_ShowFrame();
-		printf("S:%f,%f\n",Speed_L,Speed_R);
+		if(Turn_Flag == 1)
+		{
+			turn_process();//调用处理函数
+			Turn_Flag = 0;//清空标志位
+		}
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -189,15 +211,49 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//定时器回调函数
 {
 	if (htim->Instance == TIM9)
 	{
     Key_Tick();
-		Get_Route_State_Tick();
-		Get_Speed_Tick();
+		Get_Route_Error_Tick();
+		Get_Encoder_Tick();
 		Pid_Controller_Tick();
   }
+}
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)//串口中断回调
+{
+	if(huart == &huart1)
+	{
+		if(uart_message[0] == '0')
+		{
+			Move_Flag = 0;
+		}
+		if(uart_message[0] == '1')
+		{
+			Move_Flag = 1;
+		}
+		if(uart_message[0] == '2')
+		{
+			Move_Flag = 2;
+		}
+		if(uart_message[1] == '0')
+		{
+			TurnChoose[i] = 0;
+		}
+		if(uart_message[1] == '1')
+		{
+			TurnChoose[i] = 1;
+		}
+		if(uart_message[1] == '2')
+		{
+			TurnChoose[i] = 2;
+		}
+		i++;
+//		HAL_UART_Transmit(&huart1,(uint8_t*)uart_message,2,HAL_MAX_DELAY);
+		HAL_UART_Receive_IT(&huart1,(uint8_t *)uart_message,2);
+	}
 }
 
 /* USER CODE END 4 */
